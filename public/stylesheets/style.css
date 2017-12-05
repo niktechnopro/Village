@@ -1,0 +1,203 @@
+body {
+    position: relative;
+    padding: 30px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: url('../images/natureBackground.jpeg');
+    background-size: cover;
+}
+.page-wrapper {
+    height: 95vh;
+}
+.form .login-form {
+    position: inherit;
+    display: none;
+}
+.register-form-2 {
+    position: inherit;
+    display: none;
+}
+.form .register-form {
+    position: relative;
+    display: none;
+}
+.form a {
+    color: white;
+    text-decoration: none;
+}
+img {
+    width: 65px;
+    height: 65px;
+}
+.img {
+    width: 10%;
+    height: 10%;
+    padding-top: 1%;
+    padding: 0;
+    margin: 0;
+}
+.left,
+.right {
+    font-size: 18px;
+}
+.guest-menu {
+    position: relative;
+    z-index: 5;
+    height: 200px;
+    width: 80%;
+    margin: 10% auto;
+    /*background: rgba(0, 0, 0, 0.5);*/
+    border-radius: 10px;
+}
+.response-box {
+	background: rgba(0, 0, 0, 0.5);
+	padding: 0px 15px;
+}
+
+h1,
+h2,
+h4,
+h5 {
+    text-align: center;
+    color: white;
+}
+p {
+    color: white;
+    font-size: 16px;
+    margin-top: 23px;
+}
+.box-content {
+    display: block;
+    text-align: center;
+}
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 14px;
+    box-sizing: border-box;
+    font-size: 21px;
+    text-align: center;
+}
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 14px;
+    color: #FFFFFF;
+    font-size: 21px;
+    -webkit-transition: all 0.5 ease;
+    transition: all 0.5 ease;
+    cursor: pointer;
+}
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: #16e11e;
+}
+.footer {
+    background-color: lightblue;
+    height: 22px;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+}
+#guest {
+    margin-bottom: 40px;
+}
+.guest-2 {
+    margin-top: 24px;
+}
+#form-group {
+    padding: 0px;
+}
+#insurance {
+    width: 50%;
+    margin-bottom: 10px;
+}
+.header {
+    width: 100%;
+    position: fixed;
+    font-size: 25px;
+    left: 20px;
+    top: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 31px;
+}
+#chatBubbles {
+    padding-top: 2px;
+    background-size: 100% 100%;
+    background-color: rgba(215, 215, 215, 0.64);
+}
+#chatBubbles:hover {
+    color: rgba(0, 160, 160, 0.50);
+    font-weight: bold;
+}
+body {
+    font-size: 1.1vw;
+}
+/* 
+	For Smartphones
+*/
+
+@media screen and (min-width: 200px) {
+    body {
+        font-size: 1vw;
+        margin: 0 auto;
+    }
+    .img {
+        width: 5%;
+        height: 5%;
+    }
+}
+
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+#speechBubble {
+    background-image: url('../images/speechBubble.png');
+    background-size: 75% 200%;
+    background-position: 88%;
+    background-repeat: no-repeat;
+}
+.coloredBackground {
+    background-image: url('../images/thoughtBubble.png');
+    background-size: 100% 100%;
+    color: black;
+    height: 60px;
+    padding-top:17px;
+}
+
+@media screen and (max-width: 500px) and (min-width: 200px) {
+    #inverseProportional{
+        font-size: calc(10px);
+    }
+}
+/*
+@media screen and (max-width: 770px) {
+    .guest-menu{
+        height: 550px;
+    }
+    }
+}
+*/
+
+
+/*  */
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+}

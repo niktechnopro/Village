@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Village: Login Page</title>
+	<!-- Link different style sheets + javascript -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel='stylesheet' href='./stylesheets/frontpagestyle.css' />
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<!-- Start Favicon -->
+	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons.ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons.ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons.ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/favicons.ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/favicons.ico/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/favicons.ico/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/favicons.ico/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/favicons.ico/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/favicons.ico/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="images/favicons.ico/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicons.ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favicons.ico/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicons.ico/favicon-16x16.png">
+	<link rel="manifest" href="images/favicons.ico/manifest.json">
+	<!-- End Favicon -->
+
+	<!-- Start Metatags -->
+
+	<!-- Favicon Meta Tags -->
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="images/favicons.ico/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<!-- End Favicon Meta tags -->
+	<meta name="description" content=" The Companion Bot for your Child ">		
+	<meta name="keywords" content="village, villag, boys, boy, children, girl, child, girls, chat, bot, robot, chatbot, hackathon, goodienation, aasim, nathanial, alex, tai, audrey"/>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script>
+    	var onLoad;
+		onLoad = <%- locals.onLoad %>
+		console.log(onLoad)
+    </script>
+	<!-- End Meta tags -->
+</head>
+
+	<!-- Start Navigation -->
+	<div class="container navbar navbar-fixed-top nav_fixed">
+			<br>  
+			<div class="row">
+				<div class="col-xs-1 left-logo"> <img src="images/logoWhiteCrisp.png"> </div>
+				<div class="col-xs-10">
+					<center>
+						 <h2 class="brand align-middle middle">Village</h2> 
+					</center>
+				</div>
+				<!-- If the 'LogOut' button size is too small, just change the width and height below -->
+				<a href="#"> <div class="col-xs-1 guest-page exit-logo"> <img src="images/logoutWhite.png"> </div> </a>
+			</div>
+		</div>
+	<!-- End Navigation -->
+<body>
+	<div class = "page-wrapper">
+    <div class="container">
+	<div class="content">
+    <br> <br>
+    <div class="col-xs-offset-6 guest-menu">
+        <div class="col-xs-12 box-content text-center">
+				<!-- login form -->
+				<!-- pattern attribute would allow us to validate input fields -->
+				<!-- with regular expressions -->
+
+				<!-- optional regex for password
+				pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{4,}$" title="should have 1 lower case, 1 upper case, special character, 4 or more in length, example: d1D#"
+				optional regex for password  -->
+			
+
+			<div class="form">
+				<form class="login-form" method = "post" action = "/loginForm">
+					<h1 class="banner">Welcome Back</h1>
+			      <!-- email validated by pattern attribute -->
+			      <input type="text" placeholder="your email" name = "email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="email would be the following pattern something@something.something" required/>
+			      <!-- password validated by pattern attribute -->
+			      <input type="password" placeholder="password (4 characters or more)" name = "password" pattern="^.{4,}$" title="should be at least 4 characters long" required/>
+
+			      <button type = "submit">Sign In</button>
+			      <p class="left col-xs-5 guest_page left"><a href="#">Back to Welcome Page</a></p>
+			    	<p class="right col-xs-offset-7 register_page right"><a href="#">Register And Then Login</a></p>
+			    </form>
+			    
+
+			    <!-- form everyone sees - welcome page-->
+			    <form class="guest-form" method = "post" action="/search">
+			    	<h1 class="banner">Welcome to Village!</h1>
+			      <div class = "row">
+			      <p class="register_page middle-guest"> <a href="#" class="btn btn-warning register_button">First Time? Create An Account</a></p>
+			      <p class="login_page bottom-guest"><a href="#" class = "btn btn-primary login_button">Login</a> </p>
+			  	</div>
+			    </form>
+			    
+
+			    <!-- registration form -->
+			    <form class = "register-form" action="/registerForm" method="post">
+			    <h1 class="banner">REGISTER</h1>
+                   <div class="form-group">
+					<div class="row inline-form">
+						<div class = "left_field col-xs-6">
+							<input class="input form-control" type="text" name="first_name" placeholder = "First Name" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required>
+						</div>
+						<div class="right-field col-xs-6">
+							<input class="input form-control" type="text" name="last_name" placeholder = "Last Name" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required/>
+						</div>
+					</div>
+                        <input type="text" class="form-control" name="email" placeholder="Email Address" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="email would be the following pattern something@something.something" required/>
+                        
+                        <input type="password" class="form-control password" name="password1" placeholder="Password (4 characters or more)" required pattern="^.{4,}$" title="should be at least 4 characters long"/>
+                        
+                        <span id='message-password'></span>
+                        <input type="password" class="form-control confirm-password" name="password2" placeholder="Confirm your Password" pattern="^.{4,}$" title="should be at least 4 characters long" required/>
+                    	
+                        
+                        <input type="text" class="form-control" name="child_name" placeholder="Child's Name" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required/>
+						
+						<input type="text" class="form-control" name="relationship" placeholder="Relationship to child (Mom, Dad, etc.)" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required/> 
+
+						<p class="go-to-second-register-form col-xs-12 text-center">
+                   		<button type = "submit">Register</button>
+                   		<p class="guest_page"> <a href="#" class="btn btn-warning guest_page_btn">Back to Welcome page</a></p>
+                    </div>
+				</form>
+            </div>
+		</div>
+	</div>
+</div>
+			
+	</div>
+
+
+	<script>
+		// to confirm passwords
+		$('.password, .confirm-password').on('keyup', function () {
+			let passw = $('.password').val();
+			let passw_conf = $('.confirm-password').val();
+			if(passw_conf.length < passw.length || passw.length == 0){
+		  			$('.#message-password').html('');
+		  		}else if (passw == passw_conf && passw.length >= 4){
+		    	$('#message-password').html('Passwords Are Matching!!!').css('color', 'green');
+		  		}else{
+		    	$('#message-password').html('Passwords Not Matching!').css('color', 'red');
+		    	}
+		});
+		// the above snippet to confirm password
+
+		//pull login function
+		//	Hides the items with class 'register-form' slowly 
+		//	Shows the login form
+		var pullLogin = () =>{
+			$('.register-form').hide("slow");
+			$('.guest-form').toggle(()=>{
+	   		$('.login-form').animate({height: "toggle", opacity: "toggle"}, "slow",()=>{
+	   			console.log("now that effect has finished and callback function served we can move on")
+	   			});
+				   
+	   		});
+		};
+		//pull registration page function
+		//	Hides the items with class 'guest-form' slowly 
+		//	Hides the items with class 'register-form-2' slowly 
+		//	Shows the registering form (first one)
+		var pullRegistration = ()=>{
+			$('.guest-form').hide('slow');
+			$('.login-form').hide('slow');
+			$('.guest-menu').animate({height: "520px", top: "-70px"}, "slow")
+			$('.register-form').animate({height: "toggle", opacity: "toggle"}, "slow",()=>{
+				console.log('produce register form');
+			});
+		};
+		
+
+		//back to guest page
+		//	Hides the items with class 'register-form' slowly 
+		//	Hides the items with class 'register-form-2' slowly 
+		//	Shows the guest form (first one)
+		var toGuestPage = ()=>{
+			$('.login-form').hide();
+			$('.register-form').hide('slow');
+			$('.guest-menu').animate({height: "305px", top: "0"}, "slow")
+			$('.guest-form').animate({height: "toggle", opacity: "toggle"}, "slow",()=>{
+				console.log('welcome guest form has been served');
+			});
+		}
+
+
+
+		//the following are just the listeners
+		// to pull login page
+    	$('.login_page').click(()=>{
+    		pullLogin();
+    		console.log("login form will be produced")
+    	});
+		
+		// to pull registration page
+		$('.register_page').click(function(){
+			pullRegistration();
+			console.log("registration form should've been produced by now");
+		});
+		
+
+		// back to guest page
+		$('.guest_page').click(()=>{
+			toGuestPage();
+			console.log('back to guest page');
+		})
+
+		$('.exit-logo').click(()=>{
+			console.log('back to guest page');
+			$('.login-form').hide();
+			$('.register-form').hide('slow');
+			$('.guest-menu').animate({height: "305px", top: "0"}, "slow")
+			$('.guest-form').show('slow');
+			// $('.guest-form').animate({height: "toggle", opacity: "toggle"}, "slow",()=>{
+			// 	console.log('welcome guest form has been served');
+			// });
+		})
+
+		$(document).ready(()=>{
+			if (onLoad == 1) {
+				pullLogin();
+    		swal({
+  				title: "Your email is already in database",
+  				text: "Check Password and Try Again",
+  				button: "Thank you!",
+			});
+			}else if(onLoad == 2){
+				swal({
+  				title: "Attention!",
+  				text: "You must register first",
+  				button: "Thank you!",
+			});
+				pullRegistration()
+			}
+		})
+
+		//Prevents the user from scrolling.
+		var scrollEventHandler = function(){
+  				window.scroll(0, window.pageYOffset)
+		}
+		window.addEventListener("scroll", scrollEventHandler, false);
+		
+    </script>
+ </div>
+</body>
+</html>

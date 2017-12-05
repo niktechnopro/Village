@@ -1,0 +1,183 @@
+body {
+    position: relative;
+    padding: 30px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: url('../images/natureBackground.jpeg');
+    background-size: cover;
+}
+
+#message-password{
+position: absolute;
+left: 5%;
+font-size: 2em;
+}
+
+.middle-guest, .bottom-guest{
+    margin-top: 45px;
+}
+
+.login_button, .register_button{
+    font-size: 30px;
+}
+
+.guest_page_btn{
+    font-size: 21px;
+    margin-top: 21px;
+}
+
+.guest-page{
+    height: 30px;
+    width: 30px;
+}
+
+.banner{
+    font-size: 45px;
+}
+
+.middle{
+    color: white;
+}
+
+.left-logo{
+    height: 45px;
+}
+
+.nav_fixed{
+    width: 100%;
+    background-color: rgb(16,133,224);
+    height: 80px;
+
+}
+.page-wrapper {
+    height: 95vh;
+}
+
+.login-form {
+    position: inherit;
+    display: none;
+}
+
+
+.register-form {
+    position: inherit;
+    display: none;
+}
+
+.form a {
+    color: white;
+    text-decoration: none;
+}
+img {
+    width: 65px;
+    height: 65px;
+}
+
+.left,
+.right {
+    margin-top: 10px;
+    font-size: 21px;
+}
+.guest-menu {
+    position: relative;
+    z-index: 5;
+    height: 305px;
+    width: 80%;
+    margin: 15% auto;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+
+h1,
+h2,
+h4,
+h5,
+p {
+    text-align: center;
+    color: white;
+}
+
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 14px;
+    box-sizing: border-box;
+    font-size: 21px;
+    text-align: center;
+}
+.form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 14px;
+    color: #FFFFFF;
+    font-size: 21px;
+    -webkit-transition: all 0.5 ease;
+    transition: all 0.5 ease;
+    cursor: pointer;
+}
+
+.form button:hover,
+.form button:active,
+.form button:focus {
+    background: #16e11e;
+}
+
+.footer {
+    background-color: lightblue;
+    height: 22px;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+}
+
+
+#form-group {
+    padding: 0px;
+}
+/* 
+	For Smartphones
+*/
+
+@media screen and (min-width: 200px) {
+    body {
+        font-size: 0.5vw;
+        margin: 0 auto;
+    }
+    .img {
+        width: 5%;
+        height: 5%;
+    }
+}
+
+/*to keep the background steady*/
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+@media screen and (max-width: 500px) and (min-width: 200px) {
+    #inverseProportional{
+        font-size: calc(10px);
+    }
+}
+/*
+@media screen and (max-width: 770px) {
+    .guest-menu{
+        height: 550px;
+    }
+    }
+}
+*/
