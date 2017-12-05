@@ -6,6 +6,10 @@ body {
     background-size: cover;
 }
 
+.nav-row{
+    margin-top: 10px;
+}
+
 #message-password{
 position: absolute;
 left: 5%;
@@ -42,7 +46,7 @@ font-size: 2em;
     height: 45px;
 }
 
-.nav_fixed{
+.navbar{
     width: 100%;
     background-color: rgb(16,133,224);
     height: 80px;
@@ -67,6 +71,7 @@ font-size: 2em;
     color: white;
     text-decoration: none;
 }
+
 img {
     width: 65px;
     height: 65px;
@@ -146,7 +151,7 @@ p {
     padding: 0px;
 }
 /* 
-	For Smartphones
+    For Smartphones
 */
 
 @media screen and (min-width: 200px) {

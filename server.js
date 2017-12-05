@@ -10,7 +10,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const swal = require('sweetalert');
 
-
 // const io = require('socket.io');
 // const apiai = require('apiai')('35c622ace8eb4059b215441b08650a5d')//apiai token
 // const geocode = require('./geocode/geocode.js'); //module to extract lat,lng from zip code
@@ -117,7 +116,7 @@ app.post('/loginForm', (req, res, next) => {
 
 //reading from registration form
 app.post('/registerForm', (req, res)=>{
-    // console.log('receiving data from registration page')
+    console.log('receiving data from registration page')
     var first_name = req.body.first_name;
     var last_name = req.body.last_name;
     var email = req.body.email;

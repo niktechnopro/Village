@@ -5,25 +5,50 @@ body {
     background: url('../images/natureBackground.jpeg');
     background-size: cover;
 }
+
+#dog-head{
+    display: inline;
+    width: 80px;
+    height: 80px; 
+}
+
+.kid-head{
+    width:95px; 
+    height: 95px; 
+    margin-right: 2%;
+}
+
+#inverseProportional{
+    width:30%;
+}
+
+#bot{
+    display: inline; 
+    color: black; 
+    background: #f1eeee; 
+    padding:10px;
+    border-radius: 5px;
+
+}
+
+#responses{
+    margin-top: 5%;
+}
+
+.nav-row{
+    margin-top: 10px;
+}
+
 .page-wrapper {
     height: 95vh;
 }
-.form .login-form {
-    position: inherit;
-    display: none;
+
+.navbar{
+    width: 100%;
+    background-color: rgb(16,133,224);
+    height: 80px;
 }
-.register-form-2 {
-    position: inherit;
-    display: none;
-}
-.form .register-form {
-    position: relative;
-    display: none;
-}
-.form a {
-    color: white;
-    text-decoration: none;
-}
+
 img {
     width: 65px;
     height: 65px;
@@ -35,23 +60,17 @@ img {
     padding: 0;
     margin: 0;
 }
-.left,
-.right {
-    font-size: 18px;
-}
-.guest-menu {
+
+.chat-container {
     position: relative;
     z-index: 5;
-    height: 200px;
+    height: 600px;
     width: 80%;
     margin: 10% auto;
-    /*background: rgba(0, 0, 0, 0.5);*/
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
-.response-box {
-	background: rgba(0, 0, 0, 0.5);
-	padding: 0px 15px;
-}
+
 
 h1,
 h2,
@@ -65,74 +84,7 @@ p {
     font-size: 16px;
     margin-top: 23px;
 }
-.box-content {
-    display: block;
-    text-align: center;
-}
-.form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 14px;
-    box-sizing: border-box;
-    font-size: 21px;
-    text-align: center;
-}
-.form button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #4CAF50;
-    width: 100%;
-    border: 0;
-    padding: 14px;
-    color: #FFFFFF;
-    font-size: 21px;
-    -webkit-transition: all 0.5 ease;
-    transition: all 0.5 ease;
-    cursor: pointer;
-}
-.form button:hover,
-.form button:active,
-.form button:focus {
-    background: #16e11e;
-}
-.footer {
-    background-color: lightblue;
-    height: 22px;
-    width: 100%;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
-}
-#guest {
-    margin-bottom: 40px;
-}
-.guest-2 {
-    margin-top: 24px;
-}
-#form-group {
-    padding: 0px;
-}
-#insurance {
-    width: 50%;
-    margin-bottom: 10px;
-}
-.header {
-    width: 100%;
-    position: fixed;
-    font-size: 25px;
-    left: 20px;
-    top: 20px;
-    text-align: center;
-    color: #ffffff;
-    font-size: 31px;
-}
+
 #chatBubbles {
     padding-top: 2px;
     background-size: 100% 100%;
@@ -146,7 +98,7 @@ body {
     font-size: 1.1vw;
 }
 /* 
-	For Smartphones
+    For Smartphones
 */
 
 @media screen and (min-width: 200px) {
@@ -185,19 +137,4 @@ body {
     #inverseProportional{
         font-size: calc(10px);
     }
-}
-/*
-@media screen and (max-width: 770px) {
-    .guest-menu{
-        height: 550px;
-    }
-    }
-}
-*/
-
-
-/*  */
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
 }

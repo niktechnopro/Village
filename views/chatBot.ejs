@@ -33,36 +33,36 @@
 		<!-- End Meta Tags -->
 	</head>
 	<script src="https://use.fontawesome.com/535b45c3ad.js"></script>
-	<!-- Start Navigation -->
-	<div class="container navbar navbar-fixed-top " style="width: 100%; background-color: rgb(16,133,224);" >
-			<br>  
-			<div class="row">
-				<a href="#"> <div class="col-xs-1 "> <img src="images/logoWhiteCrisp.png" style=" height: 45px;"> </div> </a>
+	
+	<body>
+		<!-- Start Navigation -->
+		<div class="container navbar navbar-fixed-top"> 
+			<div class="row nav-row">
+				<div class="col-xs-1 left-logo"> <img class="nav-left" src="images/logoWhiteCrisp.png"> </div>
 				<div class="col-xs-10">
 					<center>
-						 <h3 class=""> <a class="brand align-middle" href="#" style="color: white;">Village</a> </h3> 
+						 <h2 class="brand align-middle middle">Village</h2> 
 					</center>
 				</div>
 				<!-- If the 'LogOut' button size is too small, just change the width and height below -->
-				<a href="/"> <div class="col-xs-1 pull-right "> <img src="images/logoutWhite.png" style="height: 25px; width: 40px; margin-top: 15px;"> </div> </a>
+				<a href="/"> <div class="col-xs-1 guest-page exit-logo"> <img src="images/logoutWhite.png"> </div> </a>
 			</div>
 		</div>
 	<!-- End Navigation -->
-	<body>
 		<div class = "page-wrapper">
 			<div class="container">
 				<div class="content">
-					<div class="col-xs-offset-6 guest-menu">
+					<div class="col-xs-offset-6 chat-container">
 						<form>
 							<center>
 								<br>
 								<!-- Dog Avatar Code -->
 								<div class="row">
 									<div class="col-xs-2">
-                    <img style="display: inline;" src="images/doggoTealFilled.png">
+                    <img id="dog-head" src="images/doggoTealFilled.png">
 									</div>
 									<div>
-										<h4 class="right col-xs-10" style="display: inline; color: black; background: lightgrey; padding:10px;" id="bot"><%= greeting %> What's up? Did something happen?</h4>
+										<h4 class="right col-xs-9" id="bot"> <%= greeting %> What's up? Did something happen?</h4>
 										<br> <br> <br> <br> 
 									</div>
 								</div>
@@ -72,29 +72,26 @@
 									<!--Kid Avatar Code -->
 									<div class="row">
 										<div class="col-xs-6 pull-left">  </div>
-										<div class="col-xs-offset-6" id="inverseProportional" style="width:30%;">
-                      <p id="kid" class="coloredBackground">
-                        <span style="display:inline;">...</span>
-                      </p>
-                    </div>
-										<img src="images/iconKid.svg" class="pull-right" style="width:85px; height: 85px; padding-right: 2%;">
+										<div class="col-xs-offset-5 col-xs-6" id="	inverseProportional">
+											<p id="kid" class="coloredBackground">
+					                        <span style="display:inline;">...</span>
+					                      	</p>
+					                    </div>
+										<img class="pull-right kid-head" src="images/iconKid.svg">
 									</div>
 									<!--  -->
 									<!-- Get's replaced with Jquery -->
-                  <div class="guest-menu response-box">
+                  <div class="response-box">
   									<div class="row" id="responses">
-  										<h4 class="text-white">hello</h4>
   									</div>
                   </div>
 									<!--  -->
 								</div>
-								<br> <br>
 							</center>
 						</form>
 					</div>
 				</div>
 			</div>
-			<script></script>
 		</div>
 	</body>
 	<script src="./js/flow.js"></script>
