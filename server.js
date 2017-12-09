@@ -44,9 +44,10 @@ db.connect ((error) => { //connecting to our database
 
 
 var server = http.createServer(app);
+const date = new Date()
 
 app.use((req, res, next) => { //logging info about date, location and method used
-    var now = new Date().toString();
+    var now = date.toString();
     var log = `${now}: ${req.url} ${req.method}`;
     console.log(log);
     fs.appendFile('server.log', log + '\n', (error) => { //where '\n' is a new line character
@@ -62,13 +63,12 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
     console.log('someone came to our page')
     res.render('index', {
-        dateNow: new Date().toDateString(),
+        dateNow: date.toDateString(),
     })
 });
 
 //serves front login page and veryfies if user in database
 app.post('/loginForm', (req, res, next) => {
-    console.log('receiving data from login form');
     var email = req.body.email;
     var password = req.body.password;
     console.log("this is what received from form: ", email, password)

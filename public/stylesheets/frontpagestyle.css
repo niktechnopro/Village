@@ -20,6 +20,11 @@ font-size: 2em;
     margin-top: 45px;
 }
 
+.date{
+    margin-top: 0;
+    margin-bottom: -15px;
+}
+
 .gender{
     color: white;
     font-size: 24px;
@@ -45,6 +50,7 @@ font-size: 2em;
 
 .banner{
     font-size: 45px;
+    margin-top: 18px;
 }
 
 .middle{
