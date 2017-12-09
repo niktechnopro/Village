@@ -73,14 +73,14 @@ app.post('/loginForm', (req, res, next) => {
     var password = req.body.password;
     console.log("this is what received from form: ", email, password)
     //next we are going to get info from parents table with email and password
-    const selectQuery = `SELECT pw,child_name FROM parents WHERE email = ?;`;
+    const selectQuery = `SELECT pw, child_name, gender FROM parents WHERE email = ?;`;
     db.query(selectQuery, [email],(error, results)=>{
         if (error){
             console.log('something went wrong with this db request');
             return
         }else{
             //if results is an empty array - user is not in database and must register 
-            console.log(results.length);
+            console.log("retreived: ", results[0].child_name, results[0].pw, results[0].gender);
             if (results.length == 0){
                 //this is a new user - insert them - user must register
                 res.render('index', {
@@ -91,16 +91,19 @@ app.post('/loginForm', (req, res, next) => {
                 console.log('users email is in database')
                 let child_name = results[0].child_name;
                 let compareTo = results[0].pw;
+                let gender = results[0].gender;
                 // console.log('retrieved hashed password from db:', compareTo);
-                //let's compare what we retrieved from DB to what user enetered
-                //the following returns 'true' if passwords match
+                //compare what retrieved from DB to what enetered - returns 'true' if passwords match
                 var passwordMatch = bcrypt.compareSync(password, compareTo)
                 console.log(passwordMatch);
                     if (passwordMatch){
                         // User information is in database
                         console.log('retrieved child_name from db', child_name);
+                        (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png";
+                        console.log(child)
                         res.render('chatBot',{
-                            greeting: `Hello ${child_name}!`
+                            greeting: `Hello ${child_name}!`,
+                            child_avatar: child
                         });
                     }else{
                         console.log('passwords do not match retype the password correctly')
@@ -117,20 +120,21 @@ app.post('/loginForm', (req, res, next) => {
 //reading from registration form
 app.post('/registerForm', (req, res)=>{
     console.log('receiving data from registration page')
-    var first_name = req.body.first_name;
-    var last_name = req.body.last_name;
-    var email = req.body.email;
-    var password = req.body.password2;
-    var child_name = req.body.child_name;
-    var relationship = req.body.relationship;
-    var child_username = req.body.child_username;
-    var favorite_color = req.body.favorite_color;
-    var submission_date = req.body.submission_date;
-    var hash = bcrypt.hashSync(password);
-    console.log(first_name, last_name, email, password, child_name, relationship, child_username, favorite_color, submission_date)
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const email = req.body.email;
+    const password = req.body.password2;
+    const child_name = req.body.child_name;
+    const relationship = req.body.relationship;
+    const child_username = req.body.child_username;
+    const fav_color = req.body.favorite_color;
+    const gender = req.body.boygirl;
+
+    const hash = bcrypt.hashSync(password);
+    console.log(first_name, last_name, email, password, child_name, relationship, child_username, gender)
     const selectQuery = `SELECT pw,child_name FROM parents WHERE email = ?;`;
     // console.log(hash);
-    var dbQuery = db.query(selectQuery, [email],(error, results)=>{
+    const dbQuery = db.query(selectQuery, [email],(error, results)=>{
         // console.log(dbQuery);
         //did this return a row? If so, the user already exists
         if (results.length != 0){
@@ -141,19 +145,22 @@ app.post('/registerForm', (req, res)=>{
         }else{
             //this is a new user - insert them - user must register
             console.log('user must be inserted')
-            console.log('we have to render registration page for user to register')
-            const insertQuery = `INSERT INTO parents (first_name, last_name, email, pw, child_name, relationship, child_username, fav_color, submission_date) VALUES (?,?,?,?,?,?,?,?,?);`;
+            const insertQuery = `INSERT INTO parents (first_name, last_name, email, pw, child_name, relationship, child_username, fav_color, gender) VALUES (?,?,?,?,?,?,?,?,?);`;
             // const childQuery = `SELECT child_name FROM parents where email = ?;`;
-            db.query(insertQuery, [first_name, last_name, email, hash, child_name, relationship, child_username, favorite_color, submission_date], (error)=>{
+            db.query(insertQuery, [first_name, last_name, email, hash, child_name, relationship, child_username, fav_color, gender], (error)=>{
                 if (error){
                     console.log('error inserting into database')
                     // throw error;
                     return
                 }else{
-                    console.log('succesful insertion into databse, next login');
+                    console.log('succesful insertion into databse, automatic login next');
                     console.log('child_name: ', child_name );
+                    //serving the right avatar for a child
+                    (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png"
+                    console.log(child);
                     res.render('chatBot',{
-                        greeting: `Hello ${child_name}`
+                        greeting: `Hello ${child_name}`,
+                        child_avatar: child
                     });
                     
                 }

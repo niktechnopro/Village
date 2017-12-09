@@ -20,6 +20,15 @@ font-size: 2em;
     margin-top: 45px;
 }
 
+.gender{
+    color: white;
+    font-size: 24px;
+}
+
+#boyid, #girlid{
+    margin-top: 6px;
+}
+
 .login_button, .register_button{
     font-size: 30px;
 }

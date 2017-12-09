@@ -41,11 +41,13 @@
     </script>
 	<!-- End Meta tags -->
 </head>
-
-	<!-- Start Navigation -->
-	<div class="container navbar navbar-fixed-top nav_fixed">
-			<br>  
-			<div class="row">
+<body>
+	<div class = "page-wrapper">
+    <div class="container">
+	<div class="content">
+		<!-- Start Navigation -->
+		<div class="container navbar navbar-fixed-top"> 
+			<div class="row nav-row">
 				<div class="col-xs-1 left-logo"> <img src="images/logoWhiteCrisp.png"> </div>
 				<div class="col-xs-10">
 					<center>
@@ -57,11 +59,6 @@
 			</div>
 		</div>
 	<!-- End Navigation -->
-<body>
-	<div class = "page-wrapper">
-    <div class="container">
-	<div class="content">
-    <br> <br>
     <div class="col-xs-offset-6 guest-menu">
         <div class="col-xs-12 box-content text-center">
 				<!-- login form -->
@@ -71,29 +68,27 @@
 				<!-- optional regex for password
 				pattern="^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{4,}$" title="should have 1 lower case, 1 upper case, special character, 4 or more in length, example: d1D#"
 				optional regex for password  -->
-			
-
 			<div class="form">
 				<form class="login-form" method = "post" action = "/loginForm">
-					<h1 class="banner">Welcome Back</h1>
-			      <!-- email validated by pattern attribute -->
-			      <input type="text" placeholder="your email" name = "email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="email would be the following pattern something@something.something" required/>
-			      <!-- password validated by pattern attribute -->
-			      <input type="password" placeholder="password (4 characters or more)" name = "password" pattern="^.{4,}$" title="should be at least 4 characters long" required/>
+				<h1 class="banner">Welcome Back</h1>
+					<!-- email validated by pattern attribute -->
+					<input type="text" placeholder="your email" name = "email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="email would be the following pattern something@something.something" required/>
+					<!-- password validated by pattern attribute -->
+					<input type="password" placeholder="password (4 characters or more)" name = "password" pattern="^.{4,}$" title="should be at least 4 characters long" required/>
 
-			      <button type = "submit">Sign In</button>
-			      <p class="left col-xs-5 guest_page left"><a href="#">Back to Welcome Page</a></p>
-			    	<p class="right col-xs-offset-7 register_page right"><a href="#">Register And Then Login</a></p>
+					<button type = "submit">Sign In</button>
+					<p class="left col-xs-5 guest_page left"><a href="#">Back to Welcome Page</a></p>
+					<p class="right col-xs-offset-7 register_page right"><a href="#">Register And Then Login</a></p>
 			    </form>
 			    
 
 			    <!-- form everyone sees - welcome page-->
 			    <form class="guest-form" method = "post" action="/search">
-			    	<h1 class="banner">Welcome to Village!</h1>
-			      <div class = "row">
-			      <p class="register_page middle-guest"> <a href="#" class="btn btn-warning register_button">First Time? Create An Account</a></p>
-			      <p class="login_page bottom-guest"><a href="#" class = "btn btn-primary login_button">Login</a> </p>
-			  	</div>
+			    <h1 class="banner">Welcome to Village!</h1>
+				<div class = "row">
+					<p class="register_page middle-guest"> <a href="#" class="btn btn-warning register_button">First Time? Create An Account</a></p>
+					<p class="login_page bottom-guest"><a href="#" class = "btn btn-primary login_button">Login</a> </p>
+				</div>
 			    </form>
 			    
 
@@ -116,23 +111,27 @@
                         <span id='message-password'></span>
                         <input type="password" class="form-control confirm-password" name="password2" placeholder="Confirm your Password" pattern="^.{4,}$" title="should be at least 4 characters long" required/>
                     	
-                        
                         <input type="text" class="form-control" name="child_name" placeholder="Child's Name" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required/>
+
+                        <div class="gender form-group row">	
+							<label class="radio-inline"><input id="boyid" type="radio" name="boygirl" value="boy" checked />Boy</label>
+
+							<label class="radio-inline"><input id="girlid" type="radio" name="boygirl" value="girl" />Girl</label>
+						</div>
 						
 						<input type="text" class="form-control" name="relationship" placeholder="Relationship to child (Mom, Dad, etc.)" pattern="^[a-zA-Z0-9]{2,}$" title="Must be at least 2 characters" required/> 
-
-						<p class="go-to-second-register-form col-xs-12 text-center">
-                   		<button type = "submit">Register</button>
+						
+                   		<button  type = "submit">Register</button>
                    		<p class="guest_page"> <a href="#" class="btn btn-warning guest_page_btn">Back to Welcome page</a></p>
                     </div>
 				</form>
-            </div>
+			</div>
 		</div>
 	</div>
 </div>
-			
-	</div>
-
+</div>
+</div>
+</body>
 
 	<script>
 		// to confirm passwords
@@ -144,7 +143,7 @@
 		  		}else if (passw == passw_conf && passw.length >= 4){
 		    	$('#message-password').html('Passwords Are Matching!!!').css('color', 'green');
 		  		}else{
-		    	$('#message-password').html('Passwords Not Matching!').css('color', 'red');
+		    	$('#message-password').html('Passwords are short or Not Matching!').css('color', 'red');
 		    	}
 		});
 		// the above snippet to confirm password
@@ -168,7 +167,7 @@
 		var pullRegistration = ()=>{
 			$('.guest-form').hide('slow');
 			$('.login-form').hide('slow');
-			$('.guest-menu').animate({height: "520px", top: "-70px"}, "slow")
+			$('.guest-menu').animate({height: "560px", top: "-70px"}, "slow")
 			$('.register-form').animate({height: "toggle", opacity: "toggle"}, "slow",()=>{
 				console.log('produce register form');
 			});
@@ -246,6 +245,4 @@
 		window.addEventListener("scroll", scrollEventHandler, false);
 		
     </script>
- </div>
-</body>
 </html>
