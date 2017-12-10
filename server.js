@@ -43,7 +43,7 @@ db.connect ((error) => { //connecting to our database
 //mailing service here - set up mail options
 // const mail = {
 //     from: "childvillagemailer@gmail.com",
-//     to: "nickboghurt32@gmail.com",
+//     to: "",
 //     subject: "Village ChatBot", //may need a date to be inserted
 //     text: "actual message goes here"
 // };
@@ -52,7 +52,7 @@ db.connect ((error) => { //connecting to our database
 //     host: "smtp.gmail.com",
 //     auth: {
 //         user: "childvillagemailer@gmail.com",
-//         pass: "Villagemailer"
+//         pass: ""
 //     }
 // };
 
