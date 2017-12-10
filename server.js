@@ -9,10 +9,9 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
 const swal = require('sweetalert');
-
+const mailer = require('nodemailer'); //this is for sending mail
 // const io = require('socket.io');
 // const apiai = require('apiai')('35c622ace8eb4059b215441b08650a5d')//apiai token
-// const geocode = require('./geocode/geocode.js'); //module to extract lat,lng from zip code
 const port = process.env.PORT || 3000; //configures to available port based on
 //enviroment variable or port 3000 by default - for easier management
 
@@ -41,6 +40,39 @@ db.connect ((error) => { //connecting to our database
         console.log("connection to db = success!");
     }
 })
+//mailing service here - set up mail options
+// const mail = {
+//     from: "childvillagemailer@gmail.com",
+//     to: "nickboghurt32@gmail.com",
+//     subject: "Village ChatBot", //may need a date to be inserted
+//     text: "actual message goes here"
+// };
+
+// const transport = {
+//     host: "smtp.gmail.com",
+//     auth: {
+//         user: "childvillagemailer@gmail.com",
+//         pass: "Villagemailer"
+//     }
+// };
+
+// const smtpProtocol = mailer.createTransport(transport);
+
+// smtpProtocol.verify((error, success)=>{
+//     if(error){
+//         console.log('smtpProtocol error', error);
+//     }else{
+//         console.log('server is ready to take messages')
+//     }
+// })
+
+// smtpProtocol.sendMail(mail, (error, response)=>{
+//     (error) ? console.log(error) : console.log("success - message sent: ", response)
+// })
+// //mailing service here - end of setup
+
+
+
 
 
 var server = http.createServer(app);

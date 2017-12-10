@@ -48,7 +48,7 @@ function addQuestion(parent, question, responseList){
 
 
 // Create root with first question;
-var root = new Node();
+var root = new Node("What's up? Did something happen?");
 
 // Add possible responses
 root.responses = ["yes", "no"];
@@ -158,6 +158,7 @@ $( document ).ready(function() {
             for (var i = 0; i < chatLogLength; i++) {
                 console.log(speaker + chatLog[i]);
             }
+            console.log('line 161', chatLog)
             return false;
         }
     }
@@ -170,7 +171,7 @@ $( document ).ready(function() {
 
         // Make the selected response appear in the chat bubble
         updateKidBubble( responseText );
-        setTimeout(clearKidBubble,600);
+        setTimeout(clearKidBubble,800);
 
         // Log the question the user clicked in response to
         logChat("Bot: " + currentNode.getValue());
@@ -181,7 +182,7 @@ $( document ).ready(function() {
         // Move to the next node in the tree
         children = currentNode.getChildren();
         currentNode = children[0];
-        setTimeout(iterate,600);
+        setTimeout(iterate,800);
 
         
 
