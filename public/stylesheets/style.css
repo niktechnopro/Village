@@ -12,6 +12,11 @@ body {
     height: 80px; 
 }
 
+#date{
+    margin-top: 0;
+    margin-bottom: -15px;
+}
+
 .kid-head{
     width:95px; 
     height: 95px; 

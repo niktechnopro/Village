@@ -1,6 +1,34 @@
 // Define our Node object
 // Node has value, responses array, children, and a parent
 console.log('loading flow.js')
+// loading clock
+const date = new Date().toDateString();
+$('#date').text(date); //today's date
+//ajax post - to send our chatbot transcript
+function mailer(payload){
+    $.post("/send", 
+            
+        { transcript: payload },               //this is json to be send
+
+        (result)=>{
+        console.log('expecting results after successful ajax')
+        if(result == 'success'){
+            console.log("successfuly sent a transcript")
+            swal({
+                title: "Thank You for sharing this with me!",
+                text: "Press OK button to exit",
+                icon: "success",
+                button: "OK!"
+                }).then(()=>{
+                    console.log('we are about to exit')
+                    location.href = "/";//redirects back to homepage
+                })
+        }else{
+            console.log('something went wrong - transcript was not sent')
+        }
+
+    });
+}
 function Node(value) {
 
     this.value = value;
@@ -48,7 +76,8 @@ function addQuestion(parent, question, responseList){
 
 
 // Create root with first question;
-var root = new Node("What's up? Did something happen?");
+// had to remove first question here because we use child's name in chatBot.ejs line 65
+var root = new Node();
 
 // Add possible responses
 root.responses = ["yes", "no"];
@@ -64,7 +93,8 @@ newNode = addQuestion(newNode, "Sorry to hear that. Thank you for sharing this w
 newNode = addQuestion(newNode, "Thank you for letting me know.", []);
 
 // Create an array to store the contents of our conversation
-var chatLog = []
+//first question is in it
+var chatLog = ["Bot: Did something happen?"]
 
 function logChat(text) {
     chatLog.push(text);
@@ -158,7 +188,8 @@ $( document ).ready(function() {
             for (var i = 0; i < chatLogLength; i++) {
                 console.log(speaker + chatLog[i]);
             }
-            console.log('line 161', chatLog)
+            //sending it to function mailer that will forward transcript to server
+            mailer(chatLog);
             return false;
         }
     }
@@ -171,18 +202,18 @@ $( document ).ready(function() {
 
         // Make the selected response appear in the chat bubble
         updateKidBubble( responseText );
-        setTimeout(clearKidBubble,800);
+        setTimeout(clearKidBubble,600);
 
         // Log the question the user clicked in response to
         logChat("Bot: " + currentNode.getValue());
 
         // Add the user's response to the chat log
-        logChat("User: " + responseText);
+        logChat("Child: " + responseText);
 
         // Move to the next node in the tree
         children = currentNode.getChildren();
         currentNode = children[0];
-        setTimeout(iterate,800);
+        setTimeout(iterate,600);
 
         
 

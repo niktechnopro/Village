@@ -6,74 +6,47 @@ const path = require('path');
 const mysql = require('mysql')
 const request_module = require('request');
 const bodyParser = require('body-parser');
-const router = express.Router();
 const bcrypt = require('bcrypt-nodejs');
-const swal = require('sweetalert');
 const mailer = require('nodemailer'); //this is for sending mail
+const config = require('./config/config'); //config file with db and email info
+//config leaves in config directory
+const app = express();
+var usermail;
+
 // const io = require('socket.io');
 // const apiai = require('apiai')('35c622ace8eb4059b215441b08650a5d')//apiai token
 const port = process.env.PORT || 3000; //configures to available port based on
 //enviroment variable or port 3000 by default - for easier management
 
-var app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false})); //what is urlencoded ?
 
 //here is a key:value pair (declaring the engine I'd like to use for view)
 app.set('view engine', 'ejs');
 // setup database
-var db = mysql.createConnection({ 
-    // connectionLimit: 50, maximum connections to databse
-    host: '127.0.0.1',
-    user: 'admin',
-    password: 'password',
-    database: 'DB_VILLAGE'
-})
-
+var db = mysql.createConnection(config.db);
 db.connect ((error) => { //connecting to our database
     if (error){
-        console.log(error)
         console.log('could not connect to database')
-        // throw error;// commented out so the server would not crash
+        throw error;// commented out so the server would not crash
         return;
     }else{
         console.log("connection to db = success!");
     }
 })
-//mailing service here - set up mail options
-// const mail = {
-//     from: "childvillagemailer@gmail.com",
-//     to: "",
-//     subject: "Village ChatBot", //may need a date to be inserted
-//     text: "actual message goes here"
-// };
+//db veryfied
 
-// const transport = {
-//     host: "smtp.gmail.com",
-//     auth: {
-//         user: "childvillagemailer@gmail.com",
-//         pass: ""
-//     }
-// };
-
-// const smtpProtocol = mailer.createTransport(transport);
-
-// smtpProtocol.verify((error, success)=>{
-//     if(error){
-//         console.log('smtpProtocol error', error);
-//     }else{
-//         console.log('server is ready to take messages')
-//     }
-// })
-
-// smtpProtocol.sendMail(mail, (error, response)=>{
-//     (error) ? console.log(error) : console.log("success - message sent: ", response)
-// })
-// //mailing service here - end of setup
-
-
-
-
+//mailer setup
+var smtpTransport = mailer.createTransport(config.mailer);
+smtpTransport.verify((error)=>{//to verify connection use this
+    if(error){
+        console.log('smtpProtocol error', error);
+    }else{
+        console.log('server is ready to send email messages!')
+    }
+})
+//mailer veryfied
 
 var server = http.createServer(app);
 const date = new Date()
@@ -94,9 +67,7 @@ app.use(express.static(__dirname + '/public'));
 //the following to serve welcome page
 app.get('/', (req, res) => {
     console.log('someone came to our page')
-    res.render('index', {
-        dateNow: date.toDateString(),
-    })
+    res.render('index', {})
 });
 
 //serves front login page and veryfies if user in database
@@ -112,11 +83,11 @@ app.post('/loginForm', (req, res, next) => {
             return
         }else{
             //if results is an empty array - user is not in database and must register 
-            console.log("retreived: ", results[0].child_name, results[0].pw, results[0].gender);
+            console.log("retreived: ", results);
             if (results.length == 0){
                 //this is a new user - insert them - user must register
-                res.render('index', {
-                onLoad: 2   
+                res.render('index',{
+                    onLoad: 2   
                 })  
             }else{
                 //results are NOT empty array
@@ -131,8 +102,10 @@ app.post('/loginForm', (req, res, next) => {
                     if (passwordMatch){
                         // User information is in database
                         console.log('retrieved child_name from db', child_name);
-                        (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png";
+                        //if gender not specified in DB - default to boy
+                        (gender==='boy' || gender===null) ? child="images/iconKid.svg" : child="images/iconKid2.png";
                         console.log(child)
+                        var usermail = email;
                         res.render('chatBot',{
                             greeting: `Hello ${child_name}!`,
                             child_avatar: child
@@ -188,6 +161,7 @@ app.post('/registerForm', (req, res)=>{
                     console.log('succesful insertion into databse, automatic login next');
                     console.log('child_name: ', child_name );
                     //serving the right avatar for a child
+                    console.log(gender)
                     (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png"
                     console.log(child);
                     res.render('chatBot',{
@@ -200,7 +174,30 @@ app.post('/registerForm', (req, res)=>{
         }
     })
 })
+//the following is to get chatBot transcript
+app.post('/send',(req, res)=>{
+    let transcript = req.body;
+    console.log('receiving transcript', transcript)
+        let mailOptions={
+        to : usermail,
+        subject : 'chatBot transcript',
+        text: transcript
+        }
+        console.log(mailOptions);
+        res.end('success');
+    //     smtpTransport.sendMail(mailOptions, function(error, response){
+    //     if(error){
+    //         console.log("error occured when sending mail, terminating response process", error);
+    //         res.end("error");
+    //     }else{
+    //         // console.log(JSON.stringify(response))
+    //         console.log("Message sent, terminating response process");
+    //         res.end("success");
+    //     }
+    // });
+});
     
+
 
 server.listen(port, (error) => {
     (error) ? console.log("your code sucks"): console.log(`listening on port ${port}`);
