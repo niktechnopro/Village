@@ -11,8 +11,6 @@ const mailer = require('nodemailer'); //this is for sending mail
 const config = require('./config/config'); //config file with db and email info
 //config leaves in config directory
 const app = express();
-var usermail;
-
 // const io = require('socket.io');
 // const apiai = require('apiai')('35c622ace8eb4059b215441b08650a5d')//apiai token
 const port = process.env.PORT || 3000; //configures to available port based on
@@ -104,11 +102,12 @@ app.post('/loginForm', (req, res, next) => {
                         console.log('retrieved child_name from db', child_name);
                         //if gender not specified in DB - default to boy
                         (gender==='boy' || gender===null) ? child="images/iconKid.svg" : child="images/iconKid2.png";
-                        console.log(child)
+                        console.log("should provide url for child", child)
                         var usermail = email;
                         res.render('chatBot',{
                             greeting: `Hello ${child_name}!`,
-                            child_avatar: child
+                            child_avatar: child,
+                            email: email
                         });
                     }else{
                         console.log('passwords do not match retype the password correctly')
@@ -159,14 +158,14 @@ app.post('/registerForm', (req, res)=>{
                     return
                 }else{
                     console.log('succesful insertion into databse, automatic login next');
-                    console.log('child_name: ', child_name );
+                    console.log('child_name: ', child_name, 'childs: ', gender);
                     //serving the right avatar for a child
-                    console.log(gender)
-                    (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png"
-                    console.log(child);
+                    (gender==='boy') ? child="images/iconKid.svg" : child="images/iconKid2.png";
+                    console.log('producing avatar', child);
                     res.render('chatBot',{
-                        greeting: `Hello ${child_name}`,
-                        child_avatar: child
+                        greeting: `Hello ${child_name}!`,
+                        child_avatar: child,
+                        email: email
                     });
                     
                 }
@@ -176,25 +175,27 @@ app.post('/registerForm', (req, res)=>{
 })
 //the following is to get chatBot transcript
 app.post('/send',(req, res)=>{
-    let transcript = req.body;
-    console.log('receiving transcript', transcript)
+    let transcript = req.body['transcript[]'].toString();
+    let email = req.body.email;
+    console.log('receiving transcript', transcript, typeof(transcript));
+    console.log('receiving email', email, typeof(email));
         let mailOptions={
-        to : usermail,
+        to : email,
         subject : 'chatBot transcript',
         text: transcript
         }
         console.log(mailOptions);
         res.end('success');
-    //     smtpTransport.sendMail(mailOptions, function(error, response){
-    //     if(error){
-    //         console.log("error occured when sending mail, terminating response process", error);
-    //         res.end("error");
-    //     }else{
-    //         // console.log(JSON.stringify(response))
-    //         console.log("Message sent, terminating response process");
-    //         res.end("success");
-    //     }
-    // });
+        smtpTransport.sendMail(mailOptions, function(error, response){
+        if(error){
+            console.log("error occured when sending mail, terminating response process", error);
+            res.end("error");
+        }else{
+            // console.log(JSON.stringify(response))
+            console.log("Message sent, terminating response process");
+            res.end("success");
+        }
+    });
 });
     
 

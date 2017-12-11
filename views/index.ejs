@@ -226,11 +226,12 @@
 
 		$(document).ready(()=>{
 			if (onLoad == 1) {
-				pullLogin();
     		swal({
   				title: "Your email is already in database",
   				text: "Check Password and Try Again",
   				button: "Thank you!",
+			}).then(()=>{
+				pullLogin();
 			});
 			}else if(onLoad == 2){
 				swal({
@@ -238,7 +239,7 @@
   				text: "Please proceed with registration",
   				button: "Thank you!",
 			}).then(()=>{
-				pullRegistration()
+				pullRegistration();
 				});
 			}
 		})

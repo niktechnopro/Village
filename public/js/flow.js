@@ -1,14 +1,17 @@
 // Define our Node object
 // Node has value, responses array, children, and a parent
-console.log('loading flow.js')
+console.log('loading flow.js');
+console.log('sent email', email);
+console.log('greeting is here', greeting);
 // loading clock
 const date = new Date().toDateString();
 $('#date').text(date); //today's date
 //ajax post - to send our chatbot transcript
-function mailer(payload){
+function mailer(payload, email){
     $.post("/send", 
             
-        { transcript: payload },               //this is json to be send
+        { transcript: payload,
+            email: email },               //this is json to be send
 
         (result)=>{
         console.log('expecting results after successful ajax')
@@ -74,10 +77,9 @@ function addQuestion(parent, question, responseList){
 
 ////////////////////////////////// Create question flow
 
-
 // Create root with first question;
 // had to remove first question here because we use child's name in chatBot.ejs line 65
-var root = new Node();
+var root = new Node(`${greeting} What's up? Did something happen?`);
 
 // Add possible responses
 root.responses = ["yes", "no"];
@@ -94,7 +96,7 @@ newNode = addQuestion(newNode, "Thank you for letting me know.", []);
 
 // Create an array to store the contents of our conversation
 //first question is in it
-var chatLog = ["Bot: Did something happen?"]
+var chatLog = [];
 
 function logChat(text) {
     chatLog.push(text);
@@ -189,7 +191,7 @@ $( document ).ready(function() {
                 console.log(speaker + chatLog[i]);
             }
             //sending it to function mailer that will forward transcript to server
-            mailer(chatLog);
+            mailer(chatLog, email);
             return false;
         }
     }
