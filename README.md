@@ -34,7 +34,7 @@ sudo npm install
 ```
 DB_VILLAGE_2017-12-09.sql
 ```
-* Create a CONFIG folder in root and add config.js file into it for DB and mailer(curently with gmail only) configuration
+* Create a CONFIG folder in root and add config.js file into it for DB and mailer(gmail only) configuration
 
 ```
 const config = {
