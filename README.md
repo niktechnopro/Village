@@ -29,10 +29,10 @@ git clone https://github.com/NAME/REPOSITORY
 ```
 sudo npm install
 ```
-* install MySQL database and import db structure from this file
+* Install MySQL database and import db structure from the following file in root if this repository
 
 ```
-
+DB_VILLAGE_2017-12-09.sql
 ```
 
 
