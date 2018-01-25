@@ -25,11 +25,16 @@ Bootstrap
 Type git clone, and then paste the URL you copied
 git clone https://github.com/NAME/REPOSITORY
 ```
-
 * Install node libraries
 ```
 sudo npm install
 ```
+* install MySQL database and import db structure from this file
+
+```
+
+```
+
 
 End with an example of getting some data out of the system or using it for a little demo
 
