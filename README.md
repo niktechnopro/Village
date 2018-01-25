@@ -34,10 +34,29 @@ sudo npm install
 ```
 DB_VILLAGE_2017-12-09.sql
 ```
+* Create a CONFIG folder in root and add config.js file into it for DB and mailer(curently with gmail only) configuration
 
+```
+const config = {
+    db : {
+    	host: '127.0.0.1',
+    	user: '...', //user name to log into the database
+    	password: '...', //password to log into the database
+    	database: '...' //name 
+    	},
 
-End with an example of getting some data out of the system or using it for a little demo
+    mailer : {
+    		service: "gmail",
+    		host: "smtp.gmail.com",
+    		auth: {
+        			user: "...", //email address for your mailer
+        			pass: "..." //password of mailer address
+     			}
+     		}
+}
 
+module.exports=config;
+```
 
 
 ## Built With
