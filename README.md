@@ -20,17 +20,13 @@ CSS
 Bootstrap
 
 ### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-Step number 1:
+* Clone repository
 ```
-clone this repository to your computer
+Type git clone, and then paste the URL you copied
+git clone https://github.com/NAME/REPOSITORY
 ```
 
-git clone
-
+* Install node libraries
 ```
 sudo npm install
 ```
