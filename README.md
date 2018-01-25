@@ -20,7 +20,7 @@ CSS
 Bootstrap
 
 ### Installing
-* Clone repository
+* Clone repository to location of your choice
 ```
 Type git clone, and then paste the URL you copied
 git clone https://github.com/NAME/REPOSITORY
