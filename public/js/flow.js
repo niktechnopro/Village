@@ -7,6 +7,7 @@ console.log('greeting is here', greeting);
 const date = new Date().toDateString();
 $('#date').text(date); //today's date
 //ajax post - to send our chatbot transcript
+// here $.post (and $.get) is a subset of $.ajax - $.ajax has many more parameters
 function mailer(payload, email){
     $.post("/send", 
             
