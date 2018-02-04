@@ -144,7 +144,7 @@
 			let passw = $('.password').val();
 			let passw_conf = $('.confirm-password').val();
 			if(passw_conf.length < passw.length || passw.length == 0){
-		  			$('.#message-password').html('');
+		  			$('#message-password').html('');
 		  		}else if (passw == passw_conf && passw.length >= 4){
 		    	$('#message-password').html('Passwords Are Matching!!!').css('color', 'green');
 		  		}else{
