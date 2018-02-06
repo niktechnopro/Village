@@ -68,9 +68,9 @@ module.exports=config;
 
 ## Authors
 
-* **Alex Trautman** - *Initial work* - [trautmaa](https://github.com/trautmaa)
+* **Alex Trautman** - *Founder Initial work* - [trautmaa](https://github.com/trautmaa)
+* **Nikolas Bogucharsky** - *Server DB jQuery effects Initial work* - [niktechnopro](https://github.com/niktechnopro)
 * **Tai Chen** - *Initial work* - [mindlikewater](https://github.com/mindlikewater)
-* **Nikolas Bogucharsky** - *Initial work* - [niktechnopro](https://github.com/niktechnopro)
 * **Aasim Merchant** - *Initial work* - [135dragon](https://github.com/135dragon)
 * **Audrey Redman** - *Initial work* - [somebodie](https://github.com/somebodie)
 
@@ -78,6 +78,12 @@ See also the list of [contributors]
 (https://github.com/VillageAtl/village_frontend/graphs/contributors)
 (https://github.com/VillageAtl/village/graphs/contributors)
 who participated in this project.
+
+## Project Screenshots:
+![screenshot](/images/screenshot2.png "project screenshot")
+![screenshot 2](/images/screenshot.png "project screenshot")
+![screenshot 1](/images/screenshot1.png "project screenshot")
+![screenshot 3](/images/screenshot3.png "project screenshot")
 
 ## License
 
