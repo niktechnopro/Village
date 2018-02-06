@@ -84,7 +84,7 @@ who participated in this project.
 ![screenshot 2](/screenshots/screenshot2.png "project screenshot")
 ![screenshot 3](/screenshots/screenshot3.png "project screenshot")
 ![screenshot 4](/screenshots/screenshot4.png "project screenshot")
-![screenshot 5](/screenshots/screenshot4.png "project screenshot")
+![screenshot 5](/screenshots/screenshot5.png "project screenshot")
 
 ## License
 
