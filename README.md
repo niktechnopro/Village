@@ -80,7 +80,7 @@ See also the list of [contributors]
 who participated in this project.
 
 ## Project Screenshots:
-![screenshot 1](/village screenshots/screenshot1.png "project screenshot")
+![screenshot 1](/screenshots/screenshot1.png "project screenshot")
 ![screenshot 2](/images/screenshot.png "project screenshot")
 ![screenshot 3](/images/screenshot1.png "project screenshot")
 ![screenshot 4](/images/screenshot3.png "project screenshot")
