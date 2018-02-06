@@ -69,7 +69,7 @@ module.exports=config;
 ## Authors
 
 * **Alex Trautman** - *Founder Initial work* - [trautmaa](https://github.com/trautmaa)
-* **Nikolas Bogucharsky** - *Server DB jQuery effects Initial work* - [niktechnopro](https://github.com/niktechnopro)
+* **Nikolas Bogucharsky** - *Server DB jQuery effects Initial work Node mailer* - [niktechnopro](https://github.com/niktechnopro)
 * **Tai Chen** - *Initial work* - [mindlikewater](https://github.com/mindlikewater)
 * **Aasim Merchant** - *Initial work* - [135dragon](https://github.com/135dragon)
 * **Audrey Redman** - *Initial work* - [somebodie](https://github.com/somebodie)
