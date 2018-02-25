@@ -1,6 +1,6 @@
 # Village
 
-Village is a webapp that builds emotional intelligence in boys. 
+Village is a webapp that builds emotional intelligence in adolescent children. 
 A parent creates an account and gives their child the device so they may communicate with our chatbot. 
 At the end of the session, the app sends a transcript of the conversation to the account holder. 
 
