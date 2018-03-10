@@ -25,7 +25,7 @@ function mailer(payload, email){
                 button: "OK!"
                 }).then(()=>{
                     console.log('we are about to exit')
-                    location.href = "/";//redirects back to homepage
+                    window.location.href = "/";//redirects back to homepage
                 })
         }else{
             console.log('something went wrong - transcript was not sent')
