@@ -16,23 +16,22 @@ const app = express();
 const port = process.env.PORT || 3000; //configures to available port based on
 //enviroment variable or port 3000 by default - for easier management
 
-// app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.urlencoded({extended: false}));
 
 //here is a key:value pair (declaring the engine I'd like to use for view)
 app.set('view engine', 'ejs');
 // setup database
-// var db = mysql.createConnection(config.db);
-// db.connect ((error) => { //connecting to our database
-//     if (error){
-//         console.log('could not connect to database')
-//         throw error;// commented out so the server would not crash
-//         return;
-//     }else{
-//         console.log("connection to db = success!");
-//     }
-// })
+var db = mysql.createConnection(config.db);
+db.connect ((error) => { //connecting to our database
+    if (error){
+        console.log('could not connect to database')
+        // commented out so the server would not crash
+    }else{
+        console.log("connection to db = success!");
+    }
+})
 //db veryfied
 
 //mailer setup
@@ -186,13 +185,11 @@ app.post('/send',(req, res)=>{
         text: transcript
         }
         console.log(mailOptions);
-        // res.end('success');
         smtpTransport.sendMail(mailOptions, function(error, response){
         if(error){
             console.log("error occured when sending mail, terminating response process", error);
             res.end("error");
         }else{
-            // console.log(JSON.stringify(response))
             console.log("Message sent, terminating response process");
             res.end("success");
         }
