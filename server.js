@@ -52,9 +52,9 @@ app.use((req, res, next) => { //logging info about date, location and method use
     var now = date.toString();
     var log = `${now}: ${req.url} ${req.method}`;
     console.log(log);
-    fs.appendFile('server.log', log + '\n', (error) => { //where '\n' is a new line character
-        if (error) { console.log("unable to append to server log") }
-    });
+    // fs.appendFile('server.log', log + '\n', (error) => { //where '\n' is a new line character
+    //     if (error) { console.log("unable to append to server log") }
+    // });
     next();
 });
 
