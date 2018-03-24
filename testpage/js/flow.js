@@ -148,7 +148,7 @@ $( document ).ready(function() {
         responses = currentNode.getResponses();
 
         // HTML for the chat bubbles
-        var responseBubbleHTML = "<a href='#' id='chatBubbles'><div class='col-xs-4 text-center'> <p class='coloredBackground'></p> </div> "
+        var responseBubbleHTML = "<a href='#' id='chatBubbles'><div class='col-sm-4 text-center'> <p class='coloredBackground'></p> </div> "
 
         // For each possible response, add a chat bubble then
         // append the response to it
@@ -218,5 +218,8 @@ $( document ).ready(function() {
         currentNode = children[0];
         setTimeout(iterate,600);
 
+        
+
     });
+
 });

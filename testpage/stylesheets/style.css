@@ -69,7 +69,7 @@ img {
 .chat-container {
     position: relative;
     z-index: 5;
-    height: 55rem;
+    height: 600px;
     width: 80%;
     margin: 10% auto;
     background: rgba(0, 0, 0, 0.5);
@@ -86,8 +86,8 @@ h5 {
 }
 p {
     color: white;
-    font-size: 1.5rem;
-    margin-top: 2.7rem;
+    font-size: 16px;
+    margin-top: 23px;
 }
 
 #chatBubbles {
@@ -141,11 +141,5 @@ body {
 @media screen and (max-width: 500px) and (min-width: 200px) {
     #inverseProportional{
         font-size: calc(10px);
-    }
-}
-
-@media screen and (min-width: 750px) {
-   p {
-        font-size: 1.8rem;
     }
 }
